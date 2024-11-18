@@ -1,25 +1,46 @@
-#include<stdio.h>
-void DFS(int);
-int G[10][10],visited[10],n; //n is no of vertices anc
-void main{
-int 1,j;
-printf("Enter number of vertices:");
-scanf("d", &n);
-/read the adjecency matrix
-printf("nEnter adjecency matrix of the graph:");
-for(i=0;i<n;i++){
-for(j=0;j<n;j++){
-scanf("d",&G[i][j]);}}
-//visited is initialized to zero
-for(i=0;i<n;i++){
-    visited[i]=0;}
-DFS(0);
+#include <bits/stdc++.h>
+using namespace std;
+
+// Recursive function for DFS traversal
+void DFSRec(vector<vector<int>> &adj, vector<bool> &visited, int s){
+  
+    visited[s] = true;
+
+    // Print the current vertex
+    cout << s << " ";
+
+    // Recursively visit all adjacent vertices
+    // that are not visited yet
+    for (int i : adj[s])
+        if (visited[i] == false)
+            DFSRec(adj, visited, i);
 }
-void DFS(int i)
-{
-int j;
-printf("\n%d",i);
-visited [i]=1;
-for(j=0;j<n;j++)
-    if!visitedf]&&G(10|==1)
-        DFS(j);}
+
+// Main DFS function that initializes the visited array
+// and call DFSRec
+void DFS(vector<vector<int>> &adj, int s){
+    vector<bool> visited(adj.size(), false);
+    DFSRec(adj, visited, s);
+}
+
+// To add an edge in an undirected graph
+void addEdge(vector<vector<int>> &adj, int s, int t){
+    adj[s].push_back(t); 
+    adj[t].push_back(s); 
+}
+
+int main(){
+    int V = 5; 
+    vector<vector<int>> adj(V);
+  
+    // Add edges
+    vector<vector<int>> edges={{1, 2},{1, 0},{2, 0},{2, 3},{2, 4}};
+    for (auto &e : edges)
+        addEdge(adj, e[0], e[1]);
+
+    int s = 1; // Starting vertex for DFS
+    cout << "DFS from source: " << s << endl;
+    DFS(adj, s); // Perform DFS starting from the source vertex
+
+    return 0;
+}
