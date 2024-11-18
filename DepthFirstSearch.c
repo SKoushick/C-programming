@@ -1,7 +1,7 @@
 #include<stdio.h>
 void DFS(int);
 int G[10][10],visited[10],n; //n is no of vertices anc
-void main
+void main{
 int 1,j;
 printf("Enter number of vertices:");
 scanf("d", &n);
