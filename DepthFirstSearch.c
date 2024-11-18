@@ -18,7 +18,7 @@ DFS(0);
 void DFS(int i)
 {
 int j;
-printf(" n%d",i);
+printf("\n%d",i);
 visited [i]=1;
 for(j=0;j<n;j++)
     if!visitedf]&&G(10|==1)
